@@ -1,7 +1,5 @@
 {
-	"enabled8": [
-		"app0199999999999",
-		"app022234",
-		"app03"
+	"enabled": [
+		“hello”
 	]
 }

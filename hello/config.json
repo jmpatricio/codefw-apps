@@ -3,10 +3,11 @@
 		"name": "App Hello World",
 		"author": "Bita",
 		"author_url": "http://#",
-		"version": "1.0"	
+		"version": "1.0"
 	},
 
 	"settings": {
+                "initial_view": "001”,
 		"bg-color": "#ccc"
 	},
 
@@ -15,45 +16,25 @@
 
 			{
 				"id": "home",
-				"name": "View 001",
-				"description": "View exemplo",
+				"name": "001",
+				"description": "View exemplo 1”,
 				"events": [
 					{
 
 						"name": "goContacts",
 						"target": "002"
-					},
-					{
-						"name": "evento2",
-						"target": "003"
 					}
 				]
 			},
 
 			{
-				"id": "001",
-				"name": "View 001",
+				"id": “contacts,
+				"name": “002”,
 				"description": "View exemplo 2",
-				"events": [
-
-					{
-
-						"name": "goContacts",
-						"target": "002"
-					},
-
-					{
-
-						"name": "evento2",
-						"target": "003"
-					}
-
-
-				]
+				"events": [ {} ]
 
 			}			
 
-		],
-	"initial_view": "001"
+		]
 
 }

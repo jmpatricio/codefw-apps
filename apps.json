@@ -1,7 +1,6 @@
 {
 	"enabled": [
 		"hello",
-		"hello_1",
-		"hello3"
+                "hello_1"		
 	]
 }

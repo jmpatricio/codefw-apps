@@ -1,1 +1,1 @@
-<?php echo "CodeFW-API" ?>
+<?php echo "CodeFW-API"; ?>

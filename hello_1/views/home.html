@@ -9,25 +9,31 @@
   <head>
     <title>Bootstrap view app</title>
 
-    <!-- include Bootstrap -->
+     <!-- include Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../../codefw/include/ui/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <!-- /Bootstrap -->
+    <!-- /-->
+
+    <!-- Javascript for the app -->
+      <script src="../js/js.js"></script>
+    <!-- /-->
 
   </head>
   <body>
     <div class="container">
       <div class="row">
-        <div class="span12">
-          <form action="action.php" method="GET">
+        <div class="span4">
+          <form>
             <fieldset>
             <legend>Form example:</legend>
-              <label for="firstName">Nome</label>
+              <hr/>
+              <label for="firstName">Nome</label> <br/>
               <input type="text" name="firstName" id="firstName"/> <br/>
-              <label for="lastName">Apelido</label>
+              <label for="lastName">Apelido</label> <br/>
               <input type="text" name="lastName" id="lastName"/> <br/>
+              <hr/>
             </fieldset>
-            <input type="submit">
+            <input type="submit" value="Gravar">
           </form>
         </div>
       </div>
@@ -36,6 +42,6 @@
     <!-- include Bootstrap -->
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../../../codefw/include/ui/bootstrap/js/bootstrap.min.js"></script>
-    <!-- /Bootstrap -->
+    <!-- /-->
   </body>
 </html>

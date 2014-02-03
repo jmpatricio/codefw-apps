@@ -1,6 +1,12 @@
 {
 	"enabled": [
-		"hello",
-    "hello_1"
-	]
+            "hello",
+            "hello_1"
+	],
+        
+        "roles": [
+            "admin",
+            "manager",
+            "user"
+        ]
 }

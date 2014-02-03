@@ -13,6 +13,10 @@
             [
                 {
                     "id": "home",
+                    "allow": [
+                        "admin",
+                        "manager"
+                    ],
                     "name": "View 001",
                     "description": "View exemplo",
                     "events": [

@@ -4,17 +4,42 @@
      * @author : andré Bittencourt, <andreb2890@yahoo.com.br>
      * -->
 
-<<<<<<< HEAD
+
 <!-- Include JS -->
 <script src="../wp-content/plugins/codefw-apps/hello/js/js.js"></script>
 <!-- /-->
 
 <script>
-    function TodoCtrl($scope) {
+    function TodoCtrl($scope, $http) {
+        
         $scope.todos = [
             {text: 'learn angular', done: true},
             {text: 'build an angular app', done: false}];
-
+        
+       $scope.method = "GET";
+       $scope.url = '/wordpress/wp-content/plugins/codefw-apps/hello/api.php?method=barber&params={"nome": "Bita"}';
+       
+       $scope.code = null;
+    $scope.response = null;
+ 
+    $http({method: $scope.method, url: $scope.url}).
+      success(function(data, status) {
+        $scope.status = status;
+        $scope.data = data;
+        $scope.todos = $scope.data;
+        console.log($scope.data);
+      }).
+      error(function(data, status) {
+        $scope.data = data || "Request failed";
+        $scope.status = status;
+    });
+  
+ 
+  $scope.updateModel = function(method, url) {
+    $scope.method = method;
+    $scope.url = url;
+  };
+    
         $scope.addTodo = function() {
             $scope.todos.push({text: $scope.todoText, done: false});
             $scope.todoText = '';

@@ -1,1 +1,3 @@
-//javascript for the app
+function JSController() {
+	
+}

@@ -5,13 +5,13 @@ class hello_api{
     {
         $params = json_decode($params);
         $t1['text'] = "Item 1";
-        $t1['done'] = "false";
+        $t1['done'] = false;
         
         $t2['text'] = "Item 2";
-        $t2['done'] = "true";
+        $t2['done'] = true;
         
         $t3['text'] = "Item 3";
-        $t3['done'] = "false";
+        $t3['done'] = false;
         
         $tasks[] = $t1;
         $tasks[] = $t2;
@@ -20,7 +20,6 @@ class hello_api{
         echo json_encode($tasks);
     }
 }
-
 
 $obj = new hello_api();
 $method_name = $_GET['method'];

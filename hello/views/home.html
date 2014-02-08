@@ -4,20 +4,16 @@
      * @author : andré Bittencourt, <andreb2890@yahoo.com.br>
      * -->
 
-
-<!-- Include JS -->
-<!-- /-->
-
 <!-- View's html code -->
-<div class="container-fluid" ng-app>
-    <div ng-controller="JSController as codefw">
+<div class="container-fluid" ng-app="customJS">
+    <div ng-controller="jsController">
 			<b>Nome:</b><br/>
-			<input type="text" ng-model="codefw.firstName" required ><br/>
+			<input type="text" ng-model="jsController.firstName" required ><br/>
 			<b>Apelido:</b><br/>
-			<input type="text" ng-model="codefw.lastName" required ><br/><br/>
-			<div class="well">Hello {{codefw.firstName}} {{codefw.lastName}}!</div>
-			<p><script>document.write(codeFW_getApiBaseUrl());</script></p>
-			<p><script>document.write(codeFW_includeCustomJs("js"));</script></p>
+			<input type="text" ng-model="jsController.lastName" required ><br/><br/>
+			<div class="well">Hello {{jsController.firstName}} {{jsController.lastName}}!</div>
     </div>
 </div>
+<p><script>document.write(codeFW_getApiBaseUrl());</script></p>
+<p><script>codeFW_includeCustomJs("js");</script></p>
 <!-- /-->

@@ -1,12 +1,9 @@
 /* 
  * Custom js
  *
- * @author : andré Bittencourt, <andreb2890@yahoo.com.br>
+ * @author : João Patrício
  */
 
-var customJS = angular.module('customJS', []);
-
-customJS.controller('jsController', function($scope) {
-	$scope.firstName = "";
-	$scope.lastName = "";
-});
+var HelloCtrl = function($scope){
+	$scope.name = 'Hello';
+}

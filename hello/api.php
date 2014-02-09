@@ -1,7 +1,7 @@
 <?php
+include '../../codefw/class.CodeFW_App_API.php';
 
-
-class hello_api{
+class hello_api extends CodeFW_App_API {
     function barber($params)
     {
         $params = json_decode($params);

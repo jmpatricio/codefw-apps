@@ -7,5 +7,6 @@
 var customJS = angular.module('customJS', []);
 
 customJS.controller('jsController', function($scope) {
-	
+	$scope.firstName = "";
+	$scope.lastName = "";
 });

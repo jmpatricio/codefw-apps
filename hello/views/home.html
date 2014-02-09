@@ -5,15 +5,15 @@
      * -->
 
 <!-- View's html code -->
+<script>codeFW_includeCustomJs("js");</script>
 <div class="container-fluid" ng-app="customJS">
     <div ng-controller="jsController">
 			<b>Nome:</b><br/>
-			<input type="text" ng-model="jsController.firstName" required ><br/>
+			<input type="text" ng-model="firstName" required ><br/>
 			<b>Apelido:</b><br/>
-			<input type="text" ng-model="jsController.lastName" required ><br/><br/>
-			<div class="well">Hello {{jsController.firstName}} {{jsController.lastName}}!</div>
+			<input type="text" ng-model="lastName" required ><br/><br/>
+			<div class="well">Hello {{firstName}} {{lastName}}!</div>
     </div>
 </div>
 <p><script>document.write(codeFW_getApiBaseUrl());</script></p>
-<p><script>codeFW_includeCustomJs("js");</script></p>
 <!-- /-->

@@ -6,14 +6,14 @@
 
 <!-- View's html code -->
 <script>codeFW_includeCustomJs("js");</script>
-<div class="container-fluid" ng-app>
-      <div class="row" ng-controller="HelloCtrl">
+<div class="container-fluid" ng-app="scotchApp">
+      <div class="row" ng-controller="mainController">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <h3><b>{{getName()}}</b></h3>
-            <li class="active"><a href="#">Overview</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
+            <li class="active"><a href="#/">Home</a></li>
+            <li><a href="#contact">Contacts</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#">Export</a></li>
           </ul>
           <ul class="nav nav-sidebar">
@@ -31,7 +31,7 @@
             <li><a href="">Another nav item</a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-left: 0px;">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-left: 0px;" ng-view>
           <h1 class="page-header">Dashboard</h1>
 
           <div class="row placeholders">

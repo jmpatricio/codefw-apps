@@ -1,32 +1,25 @@
 <?php
+//print_r($_SERVER);
+
+//require_once( __DIR__.'/../wp-load.php' );
+
 include '../../codefw/class.CodeFW_App_API.php';
 
 class hello_api extends CodeFW_App_API {
-    function barber($params)
-    {
-        $params = json_decode($params);
-        $t1['text'] = "Item 1";
-        $t1['done'] = false;
 
-        $t2['text'] = "Item 2";
-        $t2['done'] = true;
+    function hello_api(){
+        parent::CodeFW_App_API();
 
-        $t3['text'] = "Item 3";
-        $t3['done'] = false;
-
-        $tasks[] = $t1;
-        $tasks[] = $t2;
-        $tasks[] = $t3;
-
-        echo json_encode($tasks);
     }
+
+    function hello_world($params){
+        $arr['test'] = 'OK';
+        return json_encode($arr);
+    } 
+
 }
 
-if (!empty($_GET['method'])) {
-    $obj = new hello_api();
-    $method_name = $_GET['method'];
-    $parameter = (empty($_GET['params'])) ? $_GET['params'] : null;
-    $obj->{$method_name}($parameter);
-}
+$api = new hello_api();
+$api->listen();
 
 ?>

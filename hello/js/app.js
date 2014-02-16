@@ -34,6 +34,19 @@
 	scotchApp.controller('mainController', function($scope) {
 		// create a message to display in our view
 		$scope.message = 'Everyone come and see how good I look!';
+$http({
+  method: 'GET',
+  url: codeFW_getApiBaseUrl() 
+}).success(function(data, status, headers, config) {
+  // data contains the response
+  // status is the HTTP status
+  // headers is the header getter function
+  // config is the object that was used to create the HTTP request
+  //
+  $scope.message = data;
+}).error(function(data, status, headers, config) {
+});
+
 	});
 
 	scotchApp.controller('aboutController', function($scope) {
@@ -42,5 +55,7 @@
 
 	scotchApp.controller('contactController', function($scope) {
 		$scope.message = 'Contact us! JK. This is just a demo.';
+        
+
 	});
 

@@ -1,61 +1,59 @@
 /* 
  * Custom js
  *
- * @author : João Patrício
+ * @author : André Bittencourt, <andreb2890@yahoo.com.br>
  */
-	var scotchApp = angular.module('scotchApp', ['ngRoute']);
+
+	var appjs = angular.module('appjs', ['ngRoute']);
 	var appDir = codeFW_getAppBaseDir();
+	var apiUrl = codeFW_getApiBaseUrl();
 	var viewsDir = '/' + appDir + 'views/';
 	
 	// configure our routes
-	scotchApp.config(function($routeProvider) {
+	appjs.config(function($routeProvider) {
 		$routeProvider
 
 			// route for the home page
 			.when('/', {
-				templateUrl : viewsDir+'parts/home.html',
-				controller  : 'mainController'
+				templateUrl : viewsDir+'home.html',
+				controller  : 'homeController'
 			})
-
-			// route for the about page
-			.when('/about', {
-				templateUrl : viewsDir+'parts/about.html',
-				controller  : 'aboutController'
+			.when('/edit', {
+				templateUrl : viewsDir+'edit.html',
+				controller  : 'editController'
 			})
+	});
+	
+	/*appjs.service('userToEdit', function() {
+		var user = [];
+		return {
+			getUser : function () {
+				return user;
+			},
+			setUser : function(userSelected) {
+				user = userSelected;
+			}
+	};*/
 
-			// route for the contact page
-			.when('/contact', {
-				templateUrl : viewsDir+'parts/contacts.html',
-				controller  : 'contactController'
+	appjs.controller('homeController', function($scope, $http) {
+		// get users
+		$scope.loadData = function(){
+			$http.get('/'+apiUrl+'?clientid='+codeFW_getClientId()+'&method=hello_world&params=')
+			.success(function(data) {
+				$scope.data = data.names;
 			});
+		};
+		$scope.loadData();
 	});
-
-	// create the controller and inject Angular's $scope
-	scotchApp.controller('mainController', function($scope) {
-		// create a message to display in our view
-		$scope.message = 'Everyone come and see how good I look!';
-$http({
-  method: 'GET',
-  url: codeFW_getApiBaseUrl() 
-}).success(function(data, status, headers, config) {
-  // data contains the response
-  // status is the HTTP status
-  // headers is the header getter function
-  // config is the object that was used to create the HTTP request
-  //
-  $scope.message = data;
-}).error(function(data, status, headers, config) {
-});
-
+	
+	appjs.controller('editController', function($scope, $http) {
+		
+		$scope.loadData = function(){
+			$http.get('/'+apiUrl+'?clientid='+codeFW_getClientId()+'&method=hello_world&params=')
+			.success(function(data) {
+				$scope.data = data.names;
+			});
+		};
+		$scope.loadData();
 	});
-
-	scotchApp.controller('aboutController', function($scope) {
-		$scope.message = 'Look! I am an about page.';
-	});
-
-	scotchApp.controller('contactController', function($scope) {
-		$scope.message = 'Contact us! JK. This is just a demo.';
-        
-
-	});
-
+	

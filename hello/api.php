@@ -13,8 +13,8 @@ class hello_api extends CodeFW_App_API {
     }
 
     function hello_world($params){
-        $arr['test'] = 'OK';
-        return json_encode($arr);
+        $resp = file_get_contents('data.json');
+        return $resp;
     } 
 
 }

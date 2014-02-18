@@ -1,0 +1,24 @@
+{
+	"names" : [
+		{
+			"id" : "0",
+			"firstName" : "André",
+			"lastName" : "Bittencourt"
+		},
+		{
+			"id" : "1",
+			"firstName" : "João",
+			"lastName" : "Patrício"
+		},
+		{
+			"id" : "2",
+			"firstName" : "John",
+			"lastName" : "Doe"
+		},
+		{
+			"id" : "3",
+			"firstName" : "Jane",
+			"lastName" : "Doe"
+		}
+	]
+}

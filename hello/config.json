@@ -1,54 +1,12 @@
 {
     "info": {
         "name": "MyApp",
-        "author": "Bita",
+        "author": "André Bittencourt",
         "author_url": "http://#",
         "version": "1.0"
     },
     "settings": {
-        "bg-color": "#ccc",
-        "initial_view": "home"
-    },
-    "views":
-            [
-                {
-                    "id": "home",
-                    "allow": [
-                        "admin",
-                        "manager"
-                    ],
-                    "name": "View 001",
-                    "description": "View exemplo",
-                    "events": [
-                        {
-                            "name": "goContacts",
-                            "target": "002"
-                        },
-                        {
-                            "name": "evento2",
-                            "target": "003"
-                        }
-                    ]
-                },
-                {
-                    "id": "001",
-                    "name": "View 001",
-                    "description": "View exemplo 2",
-                    "events": [
-                        {
-                            "name": "goContacts",
-                            "target": "002"
-                        },
-                        {
-                            "name": "evento2",
-                            "target": "003"
-                        }
-
-
-                    ]
-
-                }
-
-            ]
+        "initial_view": "template"
+    }
 
 }

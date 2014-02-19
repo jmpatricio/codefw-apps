@@ -9,11 +9,9 @@
 	var apiUrl = codeFW_getApiBaseUrl();
 	var viewsDir = '/' + appDir + 'views/';
 	
-	// configure our routes
 	appjs.config(function($routeProvider) {
 		$routeProvider
 
-			// route for the home page
 			.when('/', {
 				templateUrl : viewsDir+'home.html',
 				controller  : 'homeController'
@@ -22,38 +20,41 @@
 				templateUrl : viewsDir+'edit.html',
 				controller  : 'editController'
 			})
+			.otherwise({ redirectTo : '/' });
 	});
-	
-	/*appjs.service('userToEdit', function() {
-		var user = [];
+		
+	appjs.factory('dataFactory', function($http) {
 		return {
-			getUser : function () {
-				return user;
+			getData : function() {
+				return $http({
+					url : '/'+apiUrl+'?clientid='+codeFW_getClientId()+'&method=hello_world&params=',
+					method : 'GET'
+				})
 			},
-			setUser : function(userSelected) {
-				user = userSelected;
+			editData : function(user) {
+				
 			}
-	};*/
+		}
+	});
 
-	appjs.controller('homeController', function($scope, $http) {
-		// get users
-		$scope.loadData = function(){
-			$http.get('/'+apiUrl+'?clientid='+codeFW_getClientId()+'&method=hello_world&params=')
+	appjs.controller('homeController', function($scope, dataFactory) {
+		$scope.data = [];
+		$scope.loadData = function() {
+			dataFactory.getData()
 			.success(function(data) {
 				$scope.data = data.names;
 			});
-		};
+		}
+		
 		$scope.loadData();
 	});
 	
-	appjs.controller('editController', function($scope, $http) {
+	appjs.controller('editController', function($scope, dataFactory) {
+		$scope.data = [];
+		$scope.loadData = function() {
+			
+		}
 		
-		$scope.loadData = function(){
-			$http.get('/'+apiUrl+'?clientid='+codeFW_getClientId()+'&method=hello_world&params=')
-			.success(function(data) {
-				$scope.data = data.names;
-			});
-		};
 		$scope.loadData();
 	});
 	

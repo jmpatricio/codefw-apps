@@ -5,6 +5,8 @@
 
 include '../../codefw/class.CodeFW_App_API.php';
 
+//header('Access-Control-Allow-Origin: *'); 
+
 class hello_api extends CodeFW_App_API {
 
     function hello_api(){

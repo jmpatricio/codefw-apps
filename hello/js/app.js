@@ -27,7 +27,12 @@
 		return {
 			getData : function() {
 				return $http({
-					url : '/'+apiUrl+'?clientid='+codeFW_getClientId()+'&method=hello_world&params=',
+					url : '/'+apiUrl,
+					params : { 
+						clientid : codeFW_getClientId(),
+						method : 'hello_world',
+						params : ''
+					},
 					method : 'GET'
 				})
 			},

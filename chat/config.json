@@ -1,0 +1,12 @@
+{
+    "info": {
+        "name": "Chat-App",
+        "author": "André Bittencourt",
+        "author_url": "http://#",
+        "version": "1.0"
+    },
+    "settings": {
+        "initial_view": "template"
+    }
+
+}

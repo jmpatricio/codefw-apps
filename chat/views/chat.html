@@ -1,0 +1,45 @@
+<!-- * 
+     * Chat view
+     *
+     * @author : andré Bittencourt, <andreb2890@yahoo.com.br>
+     * -->
+<div>
+	<br/>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">From</button>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu" ng-repeat="users as user">
+    <li><a href="#" ng-click="changeUserFrom(user.id)">{{user.first_name}}</a></li>
+  </ul>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">To</button>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu" ng-repeat="users as user">
+    <li><a href="#" ng-click="changeUserTo(user.id)">{{user.first_name}}</a></li>
+  </ul>
+</div>
+<br/><br/>
+<div class="row">
+	<div class="col-lg-6">
+		<label>Message: </label>
+	    <div class="input-group">
+	      <input type="text" class="form-control" ng-model="content">
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" type="button" ng-click="add_message(message)">Send</button>
+	      </span>
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+</div>
+<br/>
+<div class="well">
+	<div ng-repeat="messages as message">
+		<span>{{message.content}}</span>
+	</div>
+</div>

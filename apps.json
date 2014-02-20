@@ -2,7 +2,8 @@
 	"enabled": [
             "hello",
             "hello_1",
-            "joao"
+            "joao",
+						"chat"
 	],
         
         "roles": [

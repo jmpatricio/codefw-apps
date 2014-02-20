@@ -69,7 +69,7 @@ class hello_api extends CodeFW_App_API {
         $message['id_from'] = $params['id_from'];
         $message['id_to'] = $params['id_to'];
         $message['content'] = $params['content'];
-        $message['_sent'] = $params['_sent'];
+        $message['_sent'] = time();
         $this->db->insert('message',$message);
         $response = $this->db->insert('message',$message);
         $this->sendJSON($response, 200);

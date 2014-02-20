@@ -40,7 +40,7 @@ chatApp.factory('dataFactory', function($http) {
 				params : { 
 					clientid : codeFW_getClientId(),
 					method : 'add_message',
-					message : message,
+					content : message,
 					id_from : id_from,
 					id_to : id_to
 				},

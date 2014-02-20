@@ -32,7 +32,7 @@ class hello_api extends CodeFW_App_API {
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $users = $stmt->fetchAll();
-        return json_encode($users);
+        $this->sendJSON($users, 200);
     }
     
     function get_user($params){
@@ -42,12 +42,12 @@ class hello_api extends CodeFW_App_API {
             $sql = 'select * from user where id=?';
             $user = $this->db->fetchAssoc($sql, array($id), 0);
             if (!empty($user)){
-                return json_encode($user);
+                $response = $user;
             } else {
-                return json_encode(array('error'=>'User not found'));
+                $response = array('error'=>'User not found');
             }
         }
-        return json_encode(array('error'=>'User not found'));
+        $this->sendJSON($response, 200);
     }
     
     function get_message($params){
@@ -56,12 +56,12 @@ class hello_api extends CodeFW_App_API {
             $sql = 'select * from message where id=?';
             $message = $this->db->fetchAssoc($sql, array($id), 0);
             if (!empty($message)){
-                return json_encode($message);
+                $response = $message;
             } else {
-                return json_encode(array('error'=>'Message not found'));
+                $response = array('error'=>'Message not found');
             }
         }
-        return json_encode(array('error'=>'Message not found'));
+        $this->sendJSON($response, 200);
     }
     
     function add_message($params){
@@ -71,7 +71,8 @@ class hello_api extends CodeFW_App_API {
         $message['content'] = $params['content'];
         $message['_sent'] = $params['_sent'];
         $this->db->insert('message',$message);
-        return json_encode($this->db->insert('message',$message));
+        $response = $this->db->insert('message',$message);
+        $this->sendJSON($response, 200);
     }
     
     function list_messages($params){
@@ -80,9 +81,8 @@ class hello_api extends CodeFW_App_API {
     }
     
     function set_read($params){
-        
-        return json_encode($this->db->update('message', array('_read'=>time()), array('id'=>$params['id'])));
-        
+        $response = $this->db->update('message', array('_read'=>time()), array('id'=>$params['id']));
+        $this->sendJSON( $response , 200);
     }
 
 }

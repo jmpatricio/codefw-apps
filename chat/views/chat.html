@@ -11,7 +11,7 @@
     <span class="caret"></span>
     <span class="sr-only">Toggle Dropdown</span>
   </button>
-  <ul class="dropdown-menu" role="menu" ng-repeat="users as user">
+  <ul class="dropdown-menu" role="menu" ng-repeat="user in users">
     <li><a href="#" ng-click="changeUserFrom(user.id)">{{user.first_name}}</a></li>
   </ul>
 </div>
@@ -21,7 +21,7 @@
     <span class="caret"></span>
     <span class="sr-only">Toggle Dropdown</span>
   </button>
-  <ul class="dropdown-menu" role="menu" ng-repeat="users as user">
+  <ul class="dropdown-menu" role="menu" ng-repeat="user in users">
     <li><a href="#" ng-click="changeUserTo(user.id)">{{user.first_name}}</a></li>
   </ul>
 </div>
@@ -39,7 +39,7 @@
 </div>
 <br/>
 <div class="well">
-	<div ng-repeat="messages as message">
+	<div ng-repeat="message in messages">
 		<span>{{message.content}}</span>
 	</div>
 </div>

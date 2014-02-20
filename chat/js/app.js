@@ -21,7 +21,7 @@ chatApp.factory('dataFactory', function($http) {
 					method : 'list_users'
 				},
 				method : 'GET'
-			})
+			});
 		},
 		list_messages : function(user_id) {
 			return $http({
@@ -32,7 +32,7 @@ chatApp.factory('dataFactory', function($http) {
 					id_user : user_id
 				},
 				method : 'GET'
-			})
+			});
 		},
 		add_message : function(message, id_from, id_to) {
 			return $http({
@@ -45,9 +45,9 @@ chatApp.factory('dataFactory', function($http) {
 					id_to : id_to
 				},
 				method : 'GET'
-			})
+			});
 		}
-	}
+	};
 });
 
 chatApp.controller('chatController', function($scope, dataFactory) {

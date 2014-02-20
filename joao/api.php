@@ -70,7 +70,6 @@ class hello_api extends CodeFW_App_API {
         $message['id_to'] = $params['id_to'];
         $message['content'] = $params['content'];
         $message['_sent'] = $params['_sent'];
-        $message['_read'] = $params['_read'];
         $this->db->insert('message',$message);
         return json_encode($this->db->insert('message',$message));
     }
@@ -78,6 +77,12 @@ class hello_api extends CodeFW_App_API {
     function list_messages($params){
         $messages = $this->db->fetchAll("select * from message");
         return json_encode($messages);
+    }
+    
+    function set_read($params){
+        
+        return json_encode($this->db->update('message', array('_read'=>time()), array('id'=>$params['id'])));
+        
     }
 
 }

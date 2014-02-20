@@ -1,7 +1,8 @@
 {
 	"enabled": [
             "hello",
-            "hello_1"
+            "hello_1",
+            "joao"
 	],
         
         "roles": [

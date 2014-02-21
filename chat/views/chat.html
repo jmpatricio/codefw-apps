@@ -6,7 +6,7 @@
 <div>
 	<br/>
 <div class="btn-group">
-  <button type="button" class="btn btn-primary">From</button>
+  <button type="button" class="btn btn-primary"><i class="fa fa-user fa-fw"></i> From</button>
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
     <span class="caret"></span>
     <span class="sr-only">Toggle Dropdown</span>
@@ -20,7 +20,7 @@
   </ul>
 </div>
 <div class="btn-group">
-  <button type="button" class="btn btn-primary">To</button>
+  <button type="button" class="btn btn-primary"><i class="fa fa-user fa-fw"></i> To</button>
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
     <span class="caret"></span>
     <span class="sr-only">Toggle Dropdown</span>
@@ -46,19 +46,30 @@
 	    <div class="input-group">
 	      <input type="text" class="form-control" ng-model="message">
 	      <span class="input-group-btn">
-	        <button class="btn btn-default" type="button" ng-click="add_message()">Send</button>
+	        <button class="btn btn-default" type="button" ng-click="add_message()">Send <i class="fa fa-chevron-right"></i></button>
 	      </span>
 	    </div><!-- /input-group -->
 	  </div><!-- /.col-lg-6 -->
 </div>
 <br/>
-<div class="well">
+<div class="row">
+	<div class="col-lg-6">
 	<div ng-repeat="message in messages | orderBy :'-id':reverse">
-		<span>
-			<b>From:</b> {{users[message.id_from-1].first_name}} {{users[message.id_from-1].last_name}}
-			<br/>{{message.content}}<br/>
-			<small class="label label-info">@ {{message._sent * 1000 | date: 'yyyy-MM-dd HH:mm:ss'}}</small>
-		</span>
-		<br/><br/>
-	</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">
+		    	<i class="fa fa-envelope-o"></i> From: {{users[message.id_from-1].first_name}} {{users[message.id_from-1].last_name}}
+		    </h3>
+		  </div>
+		  <div class="panel-body">
+		    {{message.content}}
+		  </div>
+			<div class="panel-footer text-right">
+				<i class="fa fa-calendar-o"></i> <small>{{message._sent * 1000 | date: 'yyyy-MM-dd HH:mm:ss'}}</small>
+			</div>
+		</div>
+	  </div><!-- /.col-lg-6 -->
 </div>
+		
+	</div>

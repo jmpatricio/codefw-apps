@@ -92,6 +92,7 @@ var chatApp = angular.module('chatApp', ['ngRoute'])
 	};
 	$scope.add_message = function() {
 		dataFactory.add_message($scope.message, $scope.from, $scope.to);
+		$scope.message = "";
 	};
 	$scope.set_read = function(message_id) {
 		dataFactory.set_read(message_id);

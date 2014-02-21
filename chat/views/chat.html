@@ -4,10 +4,6 @@
      * @author : andré Bittencourt, <andreb2890@yahoo.com.br>
      * -->
 <div>
-    
-
-    
-
 	<br/>
 <div class="btn-group">
   <button type="button" class="btn btn-primary">From</button>
@@ -15,8 +11,12 @@
     <span class="caret"></span>
     <span class="sr-only">Toggle Dropdown</span>
   </button>
-  <ul class="dropdown-menu" role="menu" >
-    <li ng-repeat="user in users" ><a href="#" ng-click="changeUserFrom(user.id)">{{user.first_name}} {{user.last_name}}</a></li>
+  <ul class="dropdown-menu" role="menu">
+    <li ng-repeat="user in users" >
+			<a href="" ng-click="changeUserFrom(user.id)">
+				{{user.first_name}} {{user.last_name}}
+			</a>
+		</li>
   </ul>
 </div>
 <div class="btn-group">
@@ -25,25 +25,40 @@
     <span class="caret"></span>
     <span class="sr-only">Toggle Dropdown</span>
   </button>
-  <ul class="dropdown-menu" role="menu" ng-repeat="user in users">
-    <li><a href="#" ng-click="changeUserTo(user.id)">{{user.first_name}}</a></li>
+  <ul class="dropdown-menu" role="menu">
+    <li ng-repeat="user in users">
+			<a href="" ng-click="changeUserTo(user.id)">
+				{{user.first_name}} {{user.last_name}}
+			</a>
+		</li>
   </ul>
 </div>
-<br/><br/>
+</div>
+<br/>
+<div>
+	<b>From :</b> {{users[from-1].first_name}} {{users[from-1].last_name}}, 
+	<b>To :</b> {{users[to-1].first_name}} {{users[to-1].last_name}}
+</div>
+<br/>
 <div class="row">
 	<div class="col-lg-6">
-		<label>Message: </label>
+		<b>Message: </b>
 	    <div class="input-group">
-	      <input type="text" class="form-control" ng-model="content">
+	      <input type="text" class="form-control" ng-model="message">
 	      <span class="input-group-btn">
-	        <button class="btn btn-default" type="button" ng-click="add_message(content)">Send</button>
+	        <button class="btn btn-default" type="button" ng-click="add_message()">Send</button>
 	      </span>
 	    </div><!-- /input-group -->
 	  </div><!-- /.col-lg-6 -->
 </div>
 <br/>
 <div class="well">
-	<div ng-repeat="message in messages | orderBy:'_sent':!reverse">
-		<span>{{message.content}} @ {{message._sent * 1000 | date: 'yyyy-MM-dd HH:mm:ss Z'}}</span>
+	<div ng-repeat="message in messages | orderBy :'-id':reverse">
+		<span>
+			<b>From:</b> {{users[message.id_from-1].first_name}} {{users[message.id_from-1].last_name}}
+			<br/>{{message.content}}<br/>
+			<small class="label label-info">@ {{message._sent * 1000 | date: 'yyyy-MM-dd HH:mm:ss'}}</small>
+		</span>
+		<br/><br/>
 	</div>
 </div>

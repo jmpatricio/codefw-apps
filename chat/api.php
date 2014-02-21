@@ -71,8 +71,8 @@ class hello_api extends CodeFW_App_API {
         $message['content'] = $params['content'];
         $message['_sent'] = time();
         $this->db->insert('message',$message);
-        $response = $this->db->insert('message',$message);
-        $this->sendJSON($response, 200);
+        #$response = $this->db->insert('message',$message);
+        #$this->sendJSON($response, 200);
     }
     
     function list_messages($params){

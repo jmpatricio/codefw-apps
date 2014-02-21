@@ -1,17 +1,17 @@
-var chatApp = angular.module('chatApp', ['ngRoute']);
 var appDir = codeFW_getAppBaseDir();
 var apiUrl = codeFW_getApiBaseUrl();
 var viewsDir = '/' + appDir + 'views/';
+var chatApp = angular.module('chatApp', ['ngRoute'])
 
-chatApp.config(function($routeProvider) {
+.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
 			templateUrl : viewsDir+'chat.html',
 			controller  : 'chatController'
 		});
-});
+})
 
-chatApp.factory('dataFactory', function($http) {
+.factory('dataFactory', function($http) {
 	return {
 		list_users : function() {
 			return $http({
@@ -46,20 +46,34 @@ chatApp.factory('dataFactory', function($http) {
 				},
 				method : 'GET'
 			});
+		},
+		set_read : function(id) {
+			return $http({
+				url : '/'+apiUrl,
+				params : { 
+					clientid : codeFW_getClientId(),
+					method : 'set_read',
+					id : id
+				},
+				method : 'GET'
+			});
 		}
-	};
-});
+	}
+})
 
-chatApp.controller('chatController', function($scope, dataFactory, $log, $interval) {
-        $scope.$log = $log;
+.controller('chatController', function($scope, dataFactory, $interval) {
 	$scope.users = [];
 	$scope.messages = [];
 	$scope.message = [];
-	$scope.from = [];
-	$scope.to = [];
+	$scope.from = "";
+	$scope.to = "";
+	var promise = [];
 	$scope.changeUserFrom = function(user_id) {
 		$scope.from = user_id;
-		$scope.list_messages(user_id);
+		$interval.cancel(promise);
+		promise = $interval(function(){
+			$scope.list_messages(user_id);
+		},500);
 	};
 	$scope.changeUserTo = function(user_id) {
 		$scope.to = user_id;
@@ -68,24 +82,22 @@ chatApp.controller('chatController', function($scope, dataFactory, $log, $interv
 		dataFactory.list_users()
 		.success(function(data) {
 			$scope.users = data;
-                $log.log($scope.users);        
 		});
 	};
 	$scope.list_messages = function(user_id) {
 		dataFactory.list_messages(user_id)
 		.success(function(data) {
 			$scope.messages = data;
-                        $log.log($scope.messages);
 		});
 	};
-	$scope.add_message = function(message) {
-		dataFactory.add_message(message, $scope.from, $scope.to);
-		$scope.list_messages($scope.from);
+	$scope.add_message = function() {
+		dataFactory.add_message($scope.message, $scope.from, $scope.to);
+	};
+	$scope.set_read = function(message_id) {
+		dataFactory.set_read(message_id);
 	};
 	
 	$scope.listUsers();
-        
-        $interval($scope.list_messages, 1000);
 });
 
 /*USER:

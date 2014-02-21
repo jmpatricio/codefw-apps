@@ -43,7 +43,7 @@
 </div>
 <br/>
 <div class="well">
-	<div ng-repeat="message in messages">
-		<span>{{message.content}}</span>
+	<div ng-repeat="message in messages | orderBy:'_sent':!reverse">
+		<span>{{message.content}} @ {{message._sent * 1000 | date: 'yyyy-MM-dd HH:mm:ss Z'}}</span>
 	</div>
 </div>

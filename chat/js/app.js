@@ -50,7 +50,7 @@ chatApp.factory('dataFactory', function($http) {
 	};
 });
 
-chatApp.controller('chatController', function($scope, dataFactory, $log) {
+chatApp.controller('chatController', function($scope, dataFactory, $log, $interval) {
         $scope.$log = $log;
 	$scope.users = [];
 	$scope.messages = [];
@@ -75,7 +75,7 @@ chatApp.controller('chatController', function($scope, dataFactory, $log) {
 		dataFactory.list_messages(user_id)
 		.success(function(data) {
 			$scope.messages = data;
-                
+                        $log.log($scope.messages);
 		});
 	};
 	$scope.add_message = function(message) {
@@ -84,6 +84,8 @@ chatApp.controller('chatController', function($scope, dataFactory, $log) {
 	};
 	
 	$scope.listUsers();
+        
+        $interval($scope.list_messages, 1000);
 });
 
 /*USER:

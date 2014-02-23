@@ -65,15 +65,15 @@ var chatApp = angular.module('chatApp', ['ngRoute'])
 	$scope.users = [];
 	$scope.messages = [];
 	$scope.message = [];
-	$scope.from = "";
-	$scope.to = "";
+	$scope.from = null;
+	$scope.to = null;
 	var promise = [];
 	$scope.changeUserFrom = function(user_id) {
 		$scope.from = user_id;
 		$interval.cancel(promise);
 		promise = $interval(function(){
 			$scope.list_messages(user_id);
-		},500);
+		},1000);
 	};
 	$scope.changeUserTo = function(user_id) {
 		$scope.to = user_id;
@@ -87,12 +87,15 @@ var chatApp = angular.module('chatApp', ['ngRoute'])
 	$scope.list_messages = function(user_id) {
 		dataFactory.list_messages(user_id)
 		.success(function(data) {
-			$scope.messages = data;
+			if($scope.messages!==data)
+				$scope.messages = data;
 		});
 	};
 	$scope.add_message = function() {
-		dataFactory.add_message($scope.message, $scope.from, $scope.to);
-		$scope.message = "";
+		if($scope.from&&$scope.to) {
+			dataFactory.add_message($scope.message, $scope.from, $scope.to);
+			$scope.message = "";
+		}
 	};
 	$scope.set_read = function(message_id) {
 		dataFactory.set_read(message_id);

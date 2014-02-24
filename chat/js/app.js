@@ -62,12 +62,12 @@ var chatApp = angular.module('chatApp', ['ngRoute'])
 })
 
 .controller('chatController', function($scope, dataFactory, $interval) {
-	$scope.users = [];
-	$scope.messages = [];
-	$scope.message = [];
+	$scope.users = null;
+	$scope.messages = null;
+	$scope.message = null;
 	$scope.from = null;
 	$scope.to = null;
-	var promise = [];
+	var promise = null;
 	$scope.changeUserFrom = function(user_id) {
 		$scope.from = user_id;
 		$interval.cancel(promise);

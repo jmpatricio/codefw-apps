@@ -23,13 +23,14 @@ var chatApp = angular.module('chatApp', ['ngRoute'])
 				method : 'GET'
 			});
 		},
-		list_messages : function(user_id) {
+		list_messages : function(id_from, id_to) {
 			return $http({
 				url : '/'+apiUrl,
 				params : { 
 					clientid : codeFW_getClientId(),
 					method : 'list_messages',
-					id_user : user_id
+					id_from : id_from,
+					id_to : id_to
 				},
 				method : 'GET'
 			});
@@ -68,11 +69,11 @@ var chatApp = angular.module('chatApp', ['ngRoute'])
 	$scope.from = null;
 	$scope.to = null;
 	var promise = null;
-	$scope.changeUserFrom = function(user_id) {
-		$scope.from = user_id;
+	$scope.changeUserFrom = function(id_to) {
+		$scope.from = id_to;
 		$interval.cancel(promise);
 		promise = $interval(function(){
-			$scope.list_messages(user_id);
+			$scope.list_messages($scope.from, id_to);
 		},1000);
 	};
 	$scope.changeUserTo = function(user_id) {
@@ -84,8 +85,8 @@ var chatApp = angular.module('chatApp', ['ngRoute'])
 			$scope.users = data;
 		});
 	};
-	$scope.list_messages = function(user_id) {
-		dataFactory.list_messages(user_id)
+	$scope.list_messages = function(id_from, id_to) {
+		dataFactory.list_messages(id_from, id_to)
 		.success(function(data) {
 			if($scope.messages!==data)
 				$scope.messages = data;
@@ -113,5 +114,5 @@ MESSAGE
 get_message(id);
 add_message(message);
 update_message(message);
-list_messages(id_user);
+list_messages(id_from, id_to);
 set_read(id)*/

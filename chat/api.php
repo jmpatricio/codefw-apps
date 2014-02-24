@@ -76,8 +76,20 @@ class hello_api extends CodeFW_App_API {
     }
     
     function list_messages($params){
-        $messages = $this->db->fetchAll("select * from message");
-        $this->sendJSON($messages, 200);
+			$id_from = (isset($params['id_from'])) ? $params['id_from'] : false;
+      $id_to = (isset($params['id_to'])) ? $params['id_to'] : false;
+      if ($id_from&&$id_to){
+          $sql = 'select * from message where id_from=? OR id_to=?';
+	        $stmt = $this->db->prepare($sql);
+	        $stmt->execute(array($id_from, $id_to));
+	        $message = $stmt->fetchAll();
+          if (!empty($message)){
+              $response = $message;
+          } else {
+              $response = array('error'=>'Messages not found');
+          }
+      }
+      $this->sendJSON($response, 200);
     }
     
     function set_read($params){

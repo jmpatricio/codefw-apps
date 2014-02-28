@@ -94,9 +94,18 @@
 			<i class="fa fa-spinner fa-spin fa-3x"></i>
 		</div>
 
-		<div class="text-center" ng-if="from&&to&&!show&&loaded">
-			<span class="label label-default">
+		<div class="text-center">
+			<span class="label label-default" ng-if="from&&to&&loaded">
 				No messages to show
+			</span>
+			<span class="label label-default" ng-if="!from&&!to">
+				Set from and to
+			</span>
+			<span class="label label-default" ng-if="from&&!to">
+				Set to
+			</span>
+			<span class="label label-default" ng-if="!from&&to">
+				Set from
 			</span>
 		</div>
 		

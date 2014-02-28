@@ -79,17 +79,18 @@ class hello_api extends CodeFW_App_API {
 			$id_from = (isset($params['id_from'])) ? $params['id_from'] : false;
       $id_to = (isset($params['id_to'])) ? $params['id_to'] : false;
       if ($id_from&&$id_to){
-          $sql = 'select * from message where id_from=? OR id_to=?';
+          $sql = 'select * from message where (id_from=? AND id_to=?) OR (id_from=? AND id_to=?)';
 	        $stmt = $this->db->prepare($sql);
-	        $stmt->execute(array($id_from, $id_to));
+	        $stmt->execute(array($id_from, $id_to, $id_to, $id_from));
 	        $message = $stmt->fetchAll();
-          if (!empty($message)){
-              $response = $message;
+          if (count($message)>0){
+              $response = array('ok',$message);
           } else {
-              $response = array('error'=>'Messages not found');
+             $response = array('error', 'nothing to display');
           }
       }
-      $this->sendJSON($response, 200);
+			$this->sendJSON($response, 200);
+      
     }
     
     function set_read($params){
